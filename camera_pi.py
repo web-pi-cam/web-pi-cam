@@ -37,7 +37,7 @@ class Camera(object):
 
             camera.start_preview()
             time.sleep(2)
-            
+
             # let camera warm up
             stream = io.BytesIO()
             for foo in camera.capture_continuous(stream, 'jpeg',
@@ -52,6 +52,6 @@ class Camera(object):
 
                 # if there hasn't been any clients asking for frames in
                 # the last 10 seconds stop the thread
-                if time.time() - cls.last_access > 10:
+                if time.time() - cls.last_access > 1:
                     break
         cls.thread = None
