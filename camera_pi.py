@@ -36,6 +36,7 @@ class Camera(object):
             camera.resolution = (640, 640)
 
             # let camera warm up
+            stream = io.BytesIO()
             for foo in camera.capture_continuous(stream, 'jpeg',
                                                  use_video_port=True):
                 # store frame
