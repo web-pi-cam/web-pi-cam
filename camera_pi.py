@@ -35,6 +35,9 @@ class Camera(object):
             # camera setup
             camera.resolution = (640, 640)
 
+            camera.start_preview()
+            time.sleep(2)
+            
             # let camera warm up
             stream = io.BytesIO()
             for foo in camera.capture_continuous(stream, 'jpeg',
