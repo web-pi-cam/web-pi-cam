@@ -1,4 +1,7 @@
 {% extends "layout.html" %}
 {% block body %}
-
+	{% if filename %}
+		<img src="{{filename}}">
+	{% else %}
+		<h1>NO IMAGE CAPTURED</h1>
 {% endblock %}
