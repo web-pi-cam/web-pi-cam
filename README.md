@@ -18,7 +18,7 @@ Navigate to `http://localhost:8000` to see it in action.
 * `/picture` - take your picture
 
 ## Contributing
-Send pull requests, post issues, feature requests, etc. See [Github guid to contributing](https://guides.github.com/activities/contributing-to-open-source/) for ideas and guidelines.
+Send pull requests, post issues, feature requests, etc. See [Github guide to contributing](https://guides.github.com/activities/contributing-to-open-source/) for ideas and guidelines.
 
 ## License
 [MIT](https://opensource.org/licenses/MIT)
