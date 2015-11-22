@@ -5,7 +5,7 @@ from flask import Flask, send_file
 import picamera
 
 app = Flask(__name__)
-app.debug = os.env.get("WEB_PI_CAM_DEBUG", True)
+app.debug = os.environ.get("WEB_PI_CAM_DEBUG", True)
 
 @app.route("/picture")
 def take_picture():
