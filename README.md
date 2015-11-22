@@ -12,7 +12,16 @@ To run the server:
 
 `python server.py`
 
-Navigate to `http://localhost:8000` to see it in action.
+Navigate to `http://localhost:5000/picture` to see it in action.
+
+This only works if you are running the server on a Rasberry Pi with the Camera module installed. If you try to run it on a local Linux or Macbook, you will see something awful like this:
+
+```
+File "server.py", line 5, in <module>
+  import picamera
+  ...
+OSError: dlopen(libmmal.so, 6): image not found
+```
 
 ## Endpoint
 * `/picture` - take your picture
