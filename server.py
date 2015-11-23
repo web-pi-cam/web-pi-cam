@@ -1,11 +1,12 @@
 """Handle incoming requests and send back the picture"""
 import io
 
-from flask import Flask, Response, send_file
-import picamera
+from flask import Flask, Response, send_file, render_template
 try:
+    import picamera
     from camera_pi import Camera
 except:
+    print('Camera not found')
     pass
 app = Flask(__name__)
 
@@ -17,11 +18,11 @@ def take_picture():
             camera.capture(filename)
             return send_file(filename, mimetype="image/jpg")
     except:
-        return send_file('/images/test-image.jpg')
+        return send_file('./images/test-image.jpeg')
 
 @app.route("/")
 def render_picture():
-    return render_template('/templates/show_camera_stream.html', picture='/picture')
+    return render_template('/show_camera_stream.html')
 
 def generate_video(camera):
     '''Simulate streaming security-camera video'''
@@ -37,4 +38,5 @@ def stream_video():
 
 if __name__ == '__main__':
     # TODO: Don't alays expose to whole internet
+    app.debug = True
     app.run(host="0.0.0.0")
