@@ -2,6 +2,8 @@
 import io
 
 from flask import Flask, Response, send_file, render_template
+from time import sleep
+from fractions import Fraction
 try:
     import picamera
     from camera_pi import Camera
