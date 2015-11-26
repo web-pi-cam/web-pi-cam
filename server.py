@@ -15,14 +15,13 @@ def take_picture():
     try:
         with picamera.PiCamera() as camera:
             filename = "temp.jpg"
-            if true:
-                camera.framerate = Fraction(1, 6)
-                camera.shutter_speed = 6000000
-                camera.exposure_mode = 'off'
-                camera.iso = 800
-                # Give the camera a good long time to measure AWB
-                # (you may wish to use fixed AWB instead)
-                sleep(10)
+            camera.framerate = Fraction(1, 6)
+            camera.shutter_speed = 6000000
+            camera.exposure_mode = 'off'
+            camera.iso = 800
+            # Give the camera a good long time to measure AWB
+            # (you may wish to use fixed AWB instead)
+            sleep(10)
             camera.capture(filename)
             return send_file(filename, mimetype="image/jpg")
     except:
