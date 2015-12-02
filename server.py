@@ -39,7 +39,7 @@ def generate_video(camera):
 @app.route("/video")
 def stream_video():
     with picamera.PiCamera() as camera:
-        return generate_video(camera)
+        return Response(generate_video(camera))
     # return Response(generate_video(Camera()),
     #                 mimetype='multipart/x-mixed-replace; boundary=frame')
 
