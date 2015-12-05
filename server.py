@@ -4,6 +4,7 @@ import io
 from flask import Flask, Response, send_file, render_template
 from time import sleep
 from datetime import datetime
+from fractions import Fraction
 try:
     import picamera
     from camera_pi import Camera
@@ -17,6 +18,13 @@ def take_picture():
     try:
         with picamera.PiCamera() as camera:
             filename = "temp.jpg"
+            camera.framerate = Fraction(1, 6)
+            camera.shutter_speed = 6000000
+            camera.exposure_mode = 'off'
+            camera.iso = 800
+            # Give the camera a good long time to measure AWB
+            # (you may wish to use fixed AWB instead)
+            sleep(10)
             camera.capture(filename)
             return send_file(filename, mimetype="image/jpg")
     except:
