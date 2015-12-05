@@ -33,7 +33,7 @@ class Camera(object):
     def _thread(cls):
         with picamera.PiCamera() as camera:
             # camera setup
-            camera.resolution = (640, 640)
+            camera.resolution = (1024, 1024)
 
             camera.start_preview()
             time.sleep(2)
