@@ -1,8 +1,12 @@
 {% extends "/layout.html" %}
 {% block body %}
-<!-- 	<div class="image-container">
-		<img src="{{url_for('take_picture')}}" alt="No image captured">
+	<div class="image-container">
+		<!--img src="{{url_for('take_picture')}}" alt="No image captured"-->
+		<video controls>
+			<source src="{{url_for('stream_video')}}" type="video/mp4">
+			Your browser does not support video
+		</video>
 	</div> -->
 
-	<video src="{{url_for('stream_video')}}">Your browser does not support video</video>
+
 {% endblock %}

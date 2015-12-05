@@ -4,6 +4,6 @@
 	padding: 10px;
 }
 
-.image-container img{
+.image-container img, .image-container video{
 	width: 100%;
 }
