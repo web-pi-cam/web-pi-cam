@@ -17,6 +17,7 @@ app = Flask(__name__)
 def take_picture():
     try:
         with picamera.PiCamera() as camera:
+            camera.resolution = (1024, 1024)
             filename = "temp.jpg"
             camera.framerate = Fraction(1, 6)
             camera.shutter_speed = 6000000
@@ -26,13 +27,25 @@ def take_picture():
             # (you may wish to use fixed AWB instead)
             sleep(10)
             camera.capture(filename)
+            print open('./images/'+ filename, "w")
             return send_file(filename, mimetype="image/jpg")
+    except:
+        return send_file('./images/test-image.jpeg')
+
+@app.route("/get_picture")
+def get_picture():
+    try:
+        return send_file('./images/temp.jpg')
     except:
         return send_file('./images/test-image.jpeg')
 
 @app.route("/")
 def render_picture():
     return render_template('/show_camera_stream.html')
+
+@app.route("/capture")
+def render_capture():
+    return render_template('show_picture.html')
 
 def generate_video(camera):
     '''Simulate streaming security-camera video'''
