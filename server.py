@@ -23,8 +23,6 @@ def take_picture():
             camera.shutter_speed = 6000000
             camera.exposure_mode = 'off'
             camera.iso = 800
-            # Give the camera a good long time to measure AWB
-            # (you may wish to use fixed AWB instead)
             sleep(10)
             camera.capture(filename)
             print open('./images/'+ filename, "w")
