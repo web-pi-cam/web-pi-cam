@@ -19,11 +19,6 @@ def take_picture():
         with picamera.PiCamera() as camera:
             camera.resolution = (1024, 1024)
             filename = "temp.jpg"
-            camera.framerate = Fraction(1, 6)
-            camera.shutter_speed = 6000000
-            camera.exposure_mode = 'off'
-            camera.iso = 800
-            sleep(10)
             camera.capture(filename)
             print open('./images/'+ filename, "w")
             return send_file(filename, mimetype="image/jpg")
