@@ -9,15 +9,26 @@
 }
 
 .button--bottom-right {
-	position: fixed;
+	position: absolute;
 	right: 20px;
 	bottom: 20px;
 }
 
 .button--bottom-left {
-	position: fixed;
+	position: absolute;
 	left: 20px;
 	bottom: 20px;
+}
+
+#content-container {
+	width: 100%
+}
+
+#content {
+	max-width: 800px;
+	height: 100vh;
+	position: relative;
+	margin: 0 auto;
 }
 
 body {
