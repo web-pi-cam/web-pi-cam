@@ -3,7 +3,7 @@
 	<div class="image-container">
 		<img src="{{url_for('take_picture')}}" alt="No image captured">
 	</div>
-	<a class="button--bottom-left mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-button--raised" href="/"><i class="material-icons">arrow_back</i></a>
-	<a class="button--bottom-right mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-button--raised" download="wep-pi-cam" href="{{url_for('get_picture')}}"><i class="material-icons">file_download</i></a>
+	<a class="mdl-button mdl-js-button mdl-button--accent mdl-js-ripple-effect mdl-button--colored mdl-button--raised" href="/capture">Capture Another&nbsp<i class="material-icons">camera</i></a>
+	<a class="mdl-button mdl-js-button mdl-button--accent mdl-js-ripple-effect mdl-button--colored mdl-button--raised" download="wep-pi-cam" href="{{url_for('get_picture')}}">Save to Device&nbsp<i class="material-icons">file_download</i></a>
 
 {% endblock %}

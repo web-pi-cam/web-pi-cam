@@ -28,7 +28,7 @@ def take_picture():
 @app.route("/get_picture")
 def get_picture():
     try:
-        return send_file('images/temp.jpg')
+        return send_from_directory(directory='/images/', filename='temp.jpg')
     except:
         return send_file('images/test-image.jpeg')
 
