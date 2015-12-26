@@ -33,7 +33,7 @@ def render_picture():
 @app.route("/capture")
 def render_capture():
     filename = time.strftime("%Y%m%d-%H%M%S")
-    take_picture(filename, callback=show_picture(filename))
+    take_picture(filename, show_picture)
 
 def show_picture(filename):
     return render_template('show_picture.html', filename=filename)
