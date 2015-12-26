@@ -18,7 +18,7 @@ def take_picture(filename, callback):
         if not os.path.exists(os.path.dirname(filepath + '.jpg')):
             os.makedirs(os.path.dirname(filepath + '.jpg'))
         camera.capture(filepath + '.jpg')
-        callback(filename)
+        return callback(filename)
 
 # TODO: Take picture on every capture
 # TODO: Download picture rather than send picture on mobile.
