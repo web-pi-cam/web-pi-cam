@@ -1,5 +1,5 @@
 """Handle incoming requests and send back the picture"""
-import time
+import time, os
 from flask import Flask, send_file, render_template
 try:
     import picamera
@@ -13,6 +13,8 @@ def take_picture(filename, callback):
     with picamera.PiCamera() as camera:
         camera.resolution = (1024, 1024)
         filenamesplit = filename.split('-')
+        print('Take Picture:' + filename)
+        os.makedirs(os.path.dirname('images/' + filenamesplit[0] + '/' + filenamesplit[1] + '.jpg'), exist_ok=True)
         camera.capture('images/' + filenamesplit[0] + '/' + filenamesplit[1] + '.jpg')
         callback(filename)
 
