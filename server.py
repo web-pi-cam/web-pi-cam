@@ -1,10 +1,8 @@
 """Handle incoming requests and send back the picture"""
-import io
 
-from flask import Flask, Response, send_file, render_template, make_response, request
+from flask import Flask, send_file, render_template
 try:
     import picamera
-    from camera_pi import Camera
 except:
     print('Camera not found')
     pass
@@ -32,3 +30,8 @@ def render_picture():
 def render_capture():
     take_picture()
     return render_template('show_picture.html')
+
+if __name__ == '__main__':
+    # TODO: Don't alays expose to whole internet
+    app.debug = True
+    app.run(host="0.0.0.0")
