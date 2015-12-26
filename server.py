@@ -14,7 +14,8 @@ def take_picture(filename, callback):
         camera.resolution = (1024, 1024)
         filenamesplit = filename.split('-')
         print('Take Picture:' + filename)
-        os.makedirs(os.path.dirname('images/' + filenamesplit[0] + '/' + filenamesplit[1] + '.jpg'), exist_ok=True)
+        if not os.path.exists(os.path.dirname('images/' + filenamesplit[0] + '/' + filenamesplit[1] + '.jpg')):
+            os.makedirs(os.path.dirname('images/' + filenamesplit[0] + '/' + filenamesplit[1] + '.jpg'))
         camera.capture('images/' + filenamesplit[0] + '/' + filenamesplit[1] + '.jpg')
         callback(filename)
 
