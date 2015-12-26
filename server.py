@@ -12,13 +12,13 @@ app = Flask(__name__)
 def take_picture(filename):
     with picamera.PiCamera() as camera:
         camera.resolution = (1024, 1024)
-        camera.capture(filename)
+        camera.capture(filename + ".jpg")
 
 # TODO: Take picture on every capture
 # TODO: Download picture rather than send picture on mobile.
 @app.route("/get_picture")
 def get_picture(filename):
-    return send_file(filename)
+    return send_file(filename + ".jpg")
 
 @app.route("/")
 def render_picture():
@@ -26,7 +26,7 @@ def render_picture():
 
 @app.route("/capture")
 def render_capture():
-    filename = time.strftime("%Y%m%d-%H%M%S") + ".jpg"
+    filename = time.strftime("%Y%m%d-%H%M%S")
     take_picture(filename)
     return render_template('show_picture.html', filename=filename)
 
