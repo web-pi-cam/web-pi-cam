@@ -1,5 +1,6 @@
 """Handle incoming requests and send back the picture"""
 import time, os
+from urllib.parse import quote, unquote
 from flask import Flask, send_file, render_template
 try:
     import picamera
@@ -12,19 +13,19 @@ app = Flask(__name__)
 def take_picture(filename, callback):
     with picamera.PiCamera() as camera:
         camera.resolution = (1024, 1024)
-        filenamesplit = filename.split('-')
-        print('Take Picture:' + filename)
-        if not os.path.exists(os.path.dirname('images/' + filenamesplit[0] + '/' + filenamesplit[1] + '.jpg')):
-            os.makedirs(os.path.dirname('images/' + filenamesplit[0] + '/' + filenamesplit[1] + '.jpg'))
-        camera.capture('images/' + filenamesplit[0] + '/' + filenamesplit[1] + '.jpg')
+        filepath = unquote(filename)
+        print('Take Picture:' + filepath)
+        if not os.path.exists(os.path.dirname(filepath + '.jpg')):
+            os.makedirs(os.path.dirname(filepath + '.jpg'))
+        camera.capture(filepath + '.jpg')
         callback(filename)
 
 # TODO: Take picture on every capture
 # TODO: Download picture rather than send picture on mobile.
 @app.route("/get_picture/<filename>")
 def get_picture(filename):
-    filenamesplit = filename.split('-')
-    return send_file('images/' + filenamesplit[0] + '/' + filenamesplit[1] + '.jpg')
+    filepath = unquote(filename)
+    return send_file(filepath + '.jpg')
 
 @app.route("/")
 def render_picture():
@@ -32,8 +33,8 @@ def render_picture():
 
 @app.route("/capture")
 def render_capture():
-    filename = time.strftime("%Y%m%d-%H%M%S")
-    take_picture(filename, show_picture)
+    filename = quote(time.strftime("images/%Y%m%d/%H%M%S"), safe="")
+    return take_picture(filename, show_picture)
 
 def show_picture(filename):
     return render_template('show_picture.html', filename=filename)
