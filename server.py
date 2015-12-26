@@ -8,7 +8,7 @@ except:
     pass
 app = Flask(__name__)
 
-@app.route("/picture")
+@app.route("/picture/<filename>")
 def take_picture(filename):
     with picamera.PiCamera() as camera:
         camera.resolution = (1024, 1024)
@@ -16,7 +16,7 @@ def take_picture(filename):
 
 # TODO: Take picture on every capture
 # TODO: Download picture rather than send picture on mobile.
-@app.route("/get_picture")
+@app.route("/get_picture/<filename>")
 def get_picture(filename):
     return send_file(filename + ".jpg")
 
