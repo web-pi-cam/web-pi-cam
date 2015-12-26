@@ -1,7 +1,7 @@
 {% extends "/layout.html" %}
 {% block body %}
 	<div class="image-container">
-		<img src="{{url_for('take_picture')}}" alt="No image captured">
+		<img src="{{url_for('get_picture')}}" alt="No image captured">
 	</div>
 	<a class="mdl-button mdl-js-button mdl-button--accent mdl-js-ripple-effect mdl-button--colored mdl-button--raised" href="/capture">Capture Another&nbsp<i class="material-icons">camera</i></a>
 	<a class="mdl-button mdl-js-button mdl-button--accent mdl-js-ripple-effect mdl-button--colored mdl-button--raised" download="wep-pi-cam" href="{{url_for('get_picture')}}">Save to Device&nbsp<i class="material-icons">file_download</i></a>
